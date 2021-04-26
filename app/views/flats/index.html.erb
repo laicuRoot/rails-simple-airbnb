@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="row">
+    <% @flats.each do |flat| %>
+      <div class="card-deck col-4 mt-1">
+        <div class="card">
+          <%= image_tag flat.source, class: 'card-img-top' %>
+          <div class="card-body">
+            <h5 class="card-title"> <%= link_to "#{flat.name}", flat_path(flat) %> </h5>
+            <p class="card-text"> <%= flat.description %> </p>
+          </div>
+          <div class="card-footer">
+            <small> <%= link_to 'More info', flat_path(flat) %> </small>
+            <small> <%= link_to("Edit", edit_flat_path(flat), class:'text-warning') %> </small>
+            <small class="text-danger"> <%= link_to("Delete", flat_path(flat) , method: :delete, data: {confirm: 'Do you want to delete this flat?'}, class:'text-danger') %></small>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
